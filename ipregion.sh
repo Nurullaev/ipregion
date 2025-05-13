@@ -432,7 +432,7 @@ steam_lookup_v6() {
 }
 
 youtube_lookup() {
-  result=$(timeout 3 curl -4 -s --user-agent "$USER_AGENT" https://www.google.com | sed -n 's/.*"[a-z]\{2\}_\([A-Z]\{2\}\)".*/\1/p')
+  result=$(timeout 3 curl -4 -s --user-agent "$USER_AGENT" https://www.google.com | sed -n 's/.*"[a-z]\{2\}-\([A-Z]\{2\}\)".*/\1/p' | head -n 1)
 
   if [ $? -eq 124 ]; then
     echo ""
@@ -446,7 +446,7 @@ youtube_lookup() {
 }
 
 youtube_lookup_v6() {
-  result=$(timeout 3 curl -6 -s --user-agent "$USER_AGENT" https://www.google.com | sed -n 's/.*"[a-z]\{2\}_\([A-Z]\{2\}\)".*/\1/p')
+  result=$(timeout 3 curl -6 -s --user-agent "$USER_AGENT" https://www.google.com | sed -n 's/.*"[a-z]\{2\}-\([A-Z]\{2\}\)".*/\1/p' | head -n 1)
 
   if [ $? -eq 124 ]; then
     echo ""
